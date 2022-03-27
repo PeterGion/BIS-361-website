@@ -1,0 +1,55 @@
+body{
+    margin : 0px;
+    position: relative;
+    justify-content: center;
+    background-color: #202124;
+    font-family: Times New Roman,Arial,Verdana,Helvetica,sans-serif;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    margin: 0 auto;
+    color: #B8BCC1;
+}
+.acessLogo{
+    max-height: 100px;
+    max-width: 100px;
+}
+.pictureAndText{
+    display: flex;
+}
+.subSection{
+    margin-top: 0px;
+}
+.h2Headings{
+    display: flex;
+    max-width: 50%;
+    margin: 0 auto;
+    justify-content: center;
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+.h3Headings{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 35px;
+}
+.informationParagraph{
+    text-align: left;
+    margin-top: 0px;
+    font-size: 25px;
+    width: 100%;
+}
+.ubuntu{
+    max-height: 120px;
+    max-width: 400px;
+}
+.windows{
+    max-height: 150px;
+    max-width: 400px;
+}
+.excel{
+    max-height: 120px;
+    max-width: 400px;
+}

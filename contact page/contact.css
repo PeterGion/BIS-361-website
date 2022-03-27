@@ -1,0 +1,49 @@
+#contactInfo{
+    padding-left: 10px;
+}
+body{
+    margin: 0px;
+    justify-content: center;
+    background-color: #202124;
+    font-family: Times New Roman,Arial,Verdana,Helvetica,sans-serif;
+}
+.mainHeader{
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin: 0 auto;
+    color: #B8BCC1;
+}
+.leftContent{
+    float: left;
+    padding-right: 10px;
+}
+.rightContent{
+    display: flex;
+    float: right;
+}
+#container{
+    padding-right: 40px;
+}
+.contact{
+    font-size: 24px;
+    margin-top: 0px;
+    max-width: 100%;
+}
+.headshot{
+    max-width: 400px;
+    max-height: 400px;
+}
+.mainHeader{
+    max-width: 50%;
+    margin: 0 auto;
+    font-size: 40px;
+}
+.linkedIn{
+    color: #C5C9CF
+}

@@ -1,0 +1,16 @@
+nav{
+    padding: 10px;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    font-size: 25px;
+    background-color: grey;
+}
+nav a{
+    text-decoration: none;
+    margin: 0px 10px;
+    color: inherit;
+}
+nav a:hover {
+    text-decoration: underline;
+}
