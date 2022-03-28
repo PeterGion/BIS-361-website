@@ -1,0 +1,33 @@
+body{
+    margin: 0px;
+    position: relative;
+    justify-content: center;
+    background-color: #202124;
+    font-family: Times New Roman,Arial,Verdana,Helvetica,sans-serif;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin: 0 auto;
+    color: #B8BCC1;
+}
+h1{
+    font-size: 45px;
+    display: flex;
+    max-width: 75%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+.informationParagraph{
+    text-align: left;
+    margin-top: 0px;
+    font-size: 25px;
+    width: 100%;
+}
+.picture{
+    max-height: 900px;
+    width: 60%;
+    display: flex;
+    margin: 0 auto;
+}

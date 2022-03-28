@@ -11,6 +11,9 @@ nav a{
     margin: 0px 10px;
     color: inherit;
 }
-nav a:hover {
+nav a:hover{
     text-decoration: underline;
+}
+body{
+    margin: 0px;
 }

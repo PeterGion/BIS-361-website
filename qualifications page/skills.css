@@ -12,6 +12,13 @@ main{
     margin: 0 auto;
     color: #B8BCC1;
 }
+h1{
+    font-size: 45px;
+    display: flex;
+    max-width: 75%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
 .acessLogo{
     max-height: 100px;
     max-width: 100px;
@@ -53,3 +60,7 @@ main{
     max-height: 120px;
     max-width: 400px;
 }
+nav a.active {
+    color: #1e1e1e;
+    background: white;
+  }
