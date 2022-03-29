@@ -1,0 +1,302 @@
+<!--
+    name: Peter Gionfriddo
+    due date: 02/23/22
+    description: This is a website that is supposed to be a barebones versoin of the game wordel.
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Wordle</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+      <style>
+        .correct{
+          background-color: #6aaa64;
+          border: #6aaa64;
+        }
+        .almost{
+          background-color: #c9b458;
+        }
+        .wrong{
+          background-color: #787c7e;
+        }
+        div.keyboard-row {    
+          display:flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .keyboard-button {
+          margin:3px;
+          border-radius: 4px;
+          border: 2px solid gray;
+        } 
+        .link:hover{
+          font-size: 110%;
+        }
+        #background{
+          width: 100%;
+          background-color: lightgray;
+        }
+        .navbar{
+          padding-left:69px;
+          display:inline;
+          font-size: 25px;
+        }
+        .navbar li{
+          padding-left: 25px;
+          float:left;
+          list-style-type: none;
+          
+        }
+        .navbar li a{
+          width: fit-content;
+          text-decoration: none;
+          color:black;
+        }
+        .subAndReset{
+          padding-top: 20px;
+        }
+        #txtBox0,#txtBox1,#txtBox2,#txtBox3,#txtBox4{
+          text-transform:uppercase;
+          background-Color: #e9e9ed;
+        }
+        .overlay{
+          position: fixed;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background-color: black;
+          text-align: center;
+          color: white;
+          width: 50%;
+          height: 30%;
+          display: none;
+        }
+        .overlay h1{
+          padding-top: 100px;
+        }
+        .giveUpRow{
+          padding-top : 20px;
+        }
+
+
+      </style>
+      
+      <div id = "background">
+      <ul class = "navbar">
+        <li><a href="https://www.powerlanguage.co.uk/wordle/">wordle</a></li>
+        <li><a href="#" id = "darkmode">dark mode</a></li>
+      </ul>
+    </div>
+    </head>
+
+    <body>
+      <div class = "container m-5">
+         
+          <h1> Wordle Project </h1>
+          <div class = "description">
+            <p>
+              <b>Directions</b>: guess the 5 letter word. after sumitting the guess, the characters will be color-coded as follows:
+            </p>
+            <ul>
+              <li><a>the letter is in the <span class = "correct">correct postion</span></a></li>
+              <li><a>the letter is in the <span class = "almost">wrong postion</span></a></li>
+              <li><a>the letter is <span class ="wrong">not in the word</span></a></li>
+            </ul>
+            <p>
+              Your gesses do not have to be real words. For more fun, play Wordle at <a class = "link" href= "https://www.powerlanguage.co.uk/wordle/">https://www.powerlanguage.co.uk/wordle/</a>
+            </p>
+          </div>
+          <div class = "container">
+            <form class= "form" onsubmit = "return false;">
+              <div class="row">
+                <div class="col-sm">
+                  <input type = "text" id = "txtBox0" maxlength = "1" class = "form-control">
+                </div>
+                <div class="col-sm">
+                  <input type = "text" id = "txtBox1" maxlength = "1" class = "form-control">
+                </div>
+                <div class="col-sm">
+                  <input type = "text" id = "txtBox2" maxlength = "1" class = "form-control">
+                </div>
+                <div class="col-sm">
+                  <input type = "text" id = "txtBox3" maxlength = "1" class = "form-control">
+                </div>
+                <div class="col-sm">
+                  <input type = "text" id = "txtBox4" maxlength = "1" class = "form-control">
+                </div>
+              <div class="row subAndReset">
+                <div class="col-sm">
+                  <input type = "submit" value= "Submit" class = "form-control">
+                </div>
+                <div class="col-sm">
+                  <input type = "reset" class = "form-control">
+                </div>
+              </div>
+          </form>
+          <div class ="row giveUpRow">
+            <div class="col-sm">
+              <button class="btn btn-primary giveUpBtn" >I give up</button>
+            </div>
+          <div class = "overlay">
+            <h1>congratulations you solved the wordle!</h1>
+            <p>
+              click to close
+            </p>
+          </div>
+      </div>
+          
+      </div>
+      <script>
+      "use script";
+          
+        const word = 'FANCY';
+       
+        // displays "keys" for each character in the keys string
+        function writeKeys(keys) {
+    
+            document.write('<div class = "d-flex justify-content-center">')
+                for (let k of keys) {
+                    document.write('<div>');
+                    document.write('<button class = "keyboard-button" id = "' + k + '">' + k + '</button>')    
+                    document.write('</div>');
+                }
+            document.write('</div>');
+        }
+        document.write('<div class = "container keys m-5">');
+
+        writeKeys('QWERTYUIOP');
+        writeKeys('ASDFGHJKL')
+        writeKeys('ZXCVBNM');
+  
+        document.write('</div>');
+        //console.log(document.getElementsByClassName("keyboard-button").style.backgroundColor);
+        //light mode and dark mode logic
+        let lightModeOn = true;
+        $(document).ready(function(){
+          $("#darkmode").click(function(){
+            //darkMode
+          if(lightModeOn)
+          {
+            console.log("this was clicked");
+            $(".description").css("color","white");
+            $("h1").css("color","white");
+            $(".navbar li a").css("color","white");
+            $("#background").css("background-color","#202020");
+            $("body").css("background-color","#181818");
+            $("#darkmode").text("light mode");
+            lightModeOn = false;
+          }
+          //light mode
+          else
+          {
+            $(".description").css("color","black");
+            $("h1").css("color","black");
+            $(".navbar li a").css("color","black");
+            $("#background").css("background-color","lightgray");
+            $("body").css("background-color","white");
+            $("#darkmode").text("dark mode");
+            lightModeOn = true;
+          }
+          });
+        });
+        
+        /*
+        let textbox = document.querySelector("#txtBox0");
+        textbox.addEventListener("keyup",e =>{
+          console.log(e.key);
+          console.log(Number.isInteger(e.key));
+        });
+        */
+        //console.log($("input[type=text][0]").length > 0);
+        $("input[type = submit]").click(function(){
+          //console.log($("input[type=text][1]").val() + $("#txtBox1").val().toUpperCase());
+          //console.log($("#textBox0").keycode);
+          //console.log(($("#textBox0").val()).keycode >= 65 && ($("#textBox0").val()).keycode <= 90);
+          //console.log(($(":input").val().length === 0) === false);
+          
+          if($("#txtBox0").val().length > 0 && $("#txtBox1").val().length > 0 && $("#txtBox2").val().length > 0 &&
+             $("#txtBox3").val().length > 0 && $("#txtBox4").val().length > 0)
+             {
+              if($("#txtBox0").val().toUpperCase() + $("#txtBox1").val().toUpperCase() + $("#txtBox2").val().toUpperCase() + 
+                 $("#txtBox3").val().toUpperCase() + $("#txtBox4").val().toUpperCase() === word)
+                  $(".overlay").css("display","block");
+              else
+                {
+                  let letterNotPresent = true;
+                  for(let txtBoxNum = 0; txtBoxNum < word.length; txtBoxNum++)
+                  {
+                    letterNotPresent = true;
+                    //checking if the word is in the correct postion
+                    if($("#txtBox" + txtBoxNum).val().toUpperCase() === word.charAt(txtBoxNum))
+                    {
+                      $("#txtBox" + txtBoxNum).css("backgroundColor","#6aaa64");
+                      //console.log($("#" + $("#txtBox" + txtBoxNum).val().toUpperCase()));
+                      $("#" + $("#txtBox" + txtBoxNum).val().toUpperCase()).css("backgroundColor","#6aaa64");
+                    }
+                    else
+                    {
+                      //finding if the word is in the wrong postion
+                      for(let wordPos = 0; wordPos < word.length; wordPos++)
+                      {
+                        if($("#txtBox" + txtBoxNum).val().toUpperCase() === word.charAt(wordPos))
+                        {
+                          $("#txtBox" + txtBoxNum).css("backgroundColor","#c9b458");
+                          $("#" + $("#txtBox" + txtBoxNum).val().toUpperCase()).css("backgroundColor","#c9b458");
+                          letterNotPresent = false;
+                          break;
+                        }
+                      }
+                      //if it doesn't find it in the wrong postion then it will change the color to the "letter is not in the word" color
+                      if(letterNotPresent)
+                      {
+                        $("#txtBox" + txtBoxNum).css("backgroundColor","#787c7e");
+                        $("#" + $("#txtBox" + txtBoxNum).val().toUpperCase()).css("backgroundColor","#787c7e");
+                      }
+                    }
+                  }
+                }
+             }
+          else
+             alert("invalid input please enter A-Z (not case sensative) in each box and try again");
+        });
+        
+        
+        $("input[type = text]").change(function(){
+          //console.log("this changed");
+          //console.log($(event.target.id));
+          $(this).css("backgroundColor","#e9e9ed");
+          let letters = /^[A-Za-z]+$/;
+          //console.log(this.value.match(letters));
+          //console.log(event.key);
+          //console.log($($((event).attr('id'))).val());
+          if(this.value.match(letters) === null)
+          {
+            //$("#" + ($(event).attr('id')).val(""));
+            $(this).val("");
+            alert("invalid input please enter a letter from A to Z (not case sensative)");
+            //if(e.value.match(letters) !== true)
+            
+          
+            //if(this.keycode >= 65 && this.keycode <= 90)
+            //alert("invalid input please enter A-Z (not case sensative)");
+          }
+        });
+        $(".overlay").click(function(){
+          $(".overlay").css("display","none");
+        });
+        //$(document).on("click", "input[type=reset]", function(){
+        $("input[type=reset]").click(function(){
+          $("input[type=text], .keyboard-button").css("backgroundColor","#e9e9ed");
+        });
+        $(".giveUpBtn").click(function(){
+          alert("the word was: " + word);
+        });
+        </script>
+        
+  
+    </body>
+</html>
