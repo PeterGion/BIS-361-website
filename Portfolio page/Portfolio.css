@@ -26,8 +26,11 @@ h1{
     width: 100%;
 }
 .picture{
-    max-height: 900px;
-    width: 60%;
+    max-width: 500px;
+    height: auto;
     display: flex;
     margin: 0 auto;
+}
+.belowImage{
+    margin-top: 15px;
 }
