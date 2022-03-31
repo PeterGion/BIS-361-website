@@ -66,3 +66,9 @@ h1{
     margin: 0 auto;
 }
 
+.IDE{
+    display: flex;
+    max-width: 75%;
+    margin: 0 auto;
+    font-size: 40px;
+}
