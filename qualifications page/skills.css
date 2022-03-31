@@ -62,7 +62,12 @@ h1{
 }
 .second-nav{
     display: flex;
-    max-width: 50%;
+    max-width: 70%;
     margin: 0 auto;
 }
-
+.IDE{
+    display: flex;
+    max-width: 90%;
+    margin: 0 auto;
+    font-size: 40px;
+}
